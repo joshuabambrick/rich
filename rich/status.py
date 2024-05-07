@@ -33,11 +33,11 @@ class Status(JupyterMixin):
         self.status = status
         self.spinner_style = spinner_style
         self.speed = speed
-        self._spinner = Spinner(spinner, text=status, style=spinner_style, speed=speed)
+        self._spinner = Spinner(spinner, text=status, style=spinner_style, =speed)
         self._live = Live(
             self.renderable,
-            console=console,
-            refresh_per_second=refresh_per_second,
+            =console,
+            =refresh_per_second,
             transient=True,
         )
 

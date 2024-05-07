@@ -9,7 +9,7 @@ def test_prompt_str():
     console = Console(file=io.StringIO())
     name = Prompt.ask(
         "what is your name",
-        console=console,
+        =console,
         choices=["foo", "bar"],
         default="baz",
         stream=io.StringIO(INPUT),
@@ -26,7 +26,7 @@ def test_prompt_str_default():
     console = Console(file=io.StringIO())
     name = Prompt.ask(
         "what is your name",
-        console=console,
+        =console,
         default="Will",
         stream=io.StringIO(INPUT),
     )
@@ -42,7 +42,7 @@ def test_prompt_int():
     console = Console(file=io.StringIO())
     number = IntPrompt.ask(
         "Enter a number",
-        console=console,
+        =console,
         stream=io.StringIO(INPUT),
     )
     assert number == 100
@@ -55,11 +55,7 @@ def test_prompt_int():
 def test_prompt_confirm_no():
     INPUT = "foo\nNO\nn"
     console = Console(file=io.StringIO())
-    answer = Confirm.ask(
-        "continue",
-        console=console,
-        stream=io.StringIO(INPUT),
-    )
+    answer = Confirm.ask("continue", =console, stream=io.StringIO(INPUT))
     assert answer is False
     expected = "continue [y/n]: Please enter Y or N\ncontinue [y/n]: Please enter Y or N\ncontinue [y/n]: "
     output = console.file.getvalue()
@@ -70,11 +66,7 @@ def test_prompt_confirm_no():
 def test_prompt_confirm_yes():
     INPUT = "foo\nNO\ny"
     console = Console(file=io.StringIO())
-    answer = Confirm.ask(
-        "continue",
-        console=console,
-        stream=io.StringIO(INPUT),
-    )
+    answer = Confirm.ask("continue", =console, stream=io.StringIO(INPUT))
     assert answer is True
     expected = "continue [y/n]: Please enter Y or N\ncontinue [y/n]: Please enter Y or N\ncontinue [y/n]: "
     output = console.file.getvalue()
@@ -86,7 +78,7 @@ def test_prompt_confirm_default():
     INPUT = "foo\nNO\ny"
     console = Console(file=io.StringIO())
     answer = Confirm.ask(
-        "continue", console=console, stream=io.StringIO(INPUT), default=True
+        "continue", =console, stream=io.StringIO(INPUT), default=True
     )
     assert answer is True
     expected = "continue [y/n] (y): Please enter Y or N\ncontinue [y/n] (y): Please enter Y or N\ncontinue [y/n] (y): "

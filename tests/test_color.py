@@ -31,7 +31,7 @@ def test_rich() -> None:
     print(repr(as_text))
     print(repr(as_text.spans))
     assert as_text == Text(
-        "<color 'red' (standard)⬤ >", spans=[Span(23, 24, Style(color=color))]
+        "<color 'red' (standard)⬤ >", spans=[Span(23, 24, Style(=color))]
     )
 
 

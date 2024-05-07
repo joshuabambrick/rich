@@ -42,4 +42,4 @@ with Live(progress_table, refresh_per_second=10):
                 job_progress.advance(job.id)
 
         completed = sum(task.completed for task in job_progress.tasks)
-        overall_progress.update(overall_task, completed=completed)
+        overall_progress.update(overall_task, =completed)

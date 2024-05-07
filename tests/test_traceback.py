@@ -31,7 +31,7 @@ def test_handler():
         return 1 / 0
 
     try:
-        old_handler = install(console=console)
+        old_handler = install(=console)
         try:
             level1()
         except Exception:

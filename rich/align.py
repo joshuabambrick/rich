@@ -81,11 +81,11 @@ class Align(JupyterMixin):
         return cls(
             renderable,
             "left",
-            style=style,
-            vertical=vertical,
-            pad=pad,
-            width=width,
-            height=height,
+            =style,
+            =vertical,
+            =pad,
+            =width,
+            =height,
         )
 
     @classmethod
@@ -103,11 +103,11 @@ class Align(JupyterMixin):
         return cls(
             renderable,
             "center",
-            style=style,
-            vertical=vertical,
-            pad=pad,
-            width=width,
-            height=height,
+            =style,
+            =vertical,
+            =pad,
+            =width,
+            =height,
         )
 
     @classmethod
@@ -125,18 +125,18 @@ class Align(JupyterMixin):
         return cls(
             renderable,
             "right",
-            style=style,
-            vertical=vertical,
-            pad=pad,
-            width=width,
-            height=height,
+            =style,
+            =vertical,
+            =pad,
+            =width,
+            =height,
         )
 
     def __rich_console__(
         self, console: "Console", options: "ConsoleOptions"
     ) -> "RenderResult":
         align = self.align
-        width = console.measure(self.renderable, options=options).maximum
+        width = console.measure(self.renderable, =options).maximum
         rendered = console.render(
             Constrain(
                 self.renderable, width if self.width is None else min(width, self.width)

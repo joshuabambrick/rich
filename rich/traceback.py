@@ -104,18 +104,18 @@ def install(
                 type_,
                 value,
                 traceback,
-                width=width,
-                extra_lines=extra_lines,
-                theme=theme,
-                word_wrap=word_wrap,
-                show_locals=show_locals,
-                locals_max_length=locals_max_length,
-                locals_max_string=locals_max_string,
-                locals_hide_dunder=locals_hide_dunder,
+                =width,
+                =extra_lines,
+                =theme,
+                =word_wrap,
+                =show_locals,
+                =locals_max_length,
+                =locals_max_string,
+                =locals_hide_dunder,
                 locals_hide_sunder=bool(locals_hide_sunder),
-                indent_guides=indent_guides,
-                suppress=suppress,
-                max_frames=max_frames,
+                =indent_guides,
+                =suppress,
+                =max_frames,
             )
         )
 
@@ -261,9 +261,7 @@ class Traceback:
                 raise ValueError(
                     "Value for 'trace' required if not called in except: block"
                 )
-            trace = self.extract(
-                exc_type, exc_value, traceback, show_locals=show_locals
-            )
+            trace = self.extract(exc_type, exc_value, traceback, =show_locals)
         self.trace = trace
         self.width = width
         self.extra_lines = extra_lines
@@ -336,27 +334,27 @@ class Traceback:
             exc_type,
             exc_value,
             traceback,
-            show_locals=show_locals,
-            locals_max_length=locals_max_length,
-            locals_max_string=locals_max_string,
-            locals_hide_dunder=locals_hide_dunder,
-            locals_hide_sunder=locals_hide_sunder,
+            =show_locals,
+            =locals_max_length,
+            =locals_max_string,
+            =locals_hide_dunder,
+            =locals_hide_sunder,
         )
 
         return cls(
             rich_traceback,
-            width=width,
-            extra_lines=extra_lines,
-            theme=theme,
-            word_wrap=word_wrap,
-            show_locals=show_locals,
-            indent_guides=indent_guides,
-            locals_max_length=locals_max_length,
-            locals_max_string=locals_max_string,
-            locals_hide_dunder=locals_hide_dunder,
-            locals_hide_sunder=locals_hide_sunder,
-            suppress=suppress,
-            max_frames=max_frames,
+            =width,
+            =extra_lines,
+            =theme,
+            =word_wrap,
+            =show_locals,
+            =indent_guides,
+            =locals_max_length,
+            =locals_max_string,
+            =locals_hide_dunder,
+            =locals_hide_sunder,
+            =suppress,
+            =max_frames,
         )
 
     @classmethod
@@ -405,7 +403,7 @@ class Traceback:
             stack = Stack(
                 exc_type=safe_str(exc_type.__name__),
                 exc_value=safe_str(exc_value),
-                is_cause=is_cause,
+                =is_cause,
             )
 
             if isinstance(exc_value, SyntaxError):
@@ -481,7 +479,7 @@ class Traceback:
             # No cover, code is reached but coverage doesn't recognize it.
             break  # pragma: no cover
 
-        trace = Trace(stacks=stacks)
+        trace = Trace(=stacks)
         return trace
 
     def __rich_console__(
@@ -687,7 +685,7 @@ class Traceback:
                     syntax = Syntax(
                         code,
                         lexer_name,
-                        theme=theme,
+                        =theme,
                         line_numbers=True,
                         line_range=(
                             frame.lineno - self.extra_lines,

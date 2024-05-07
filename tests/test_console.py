@@ -252,7 +252,7 @@ def test_print_json_with_default_ensure_ascii():
 def test_print_json_indent_none():
     console = Console(file=io.StringIO(), color_system="truecolor")
     data = {"name": "apple", "count": 1}
-    console.print_json(data=data, indent=None)
+    console.print_json(=data, indent=None)
     result = console.file.getvalue()
     expected = '\x1b[1m{\x1b[0m\x1b[1;34m"name"\x1b[0m: \x1b[32m"apple"\x1b[0m, \x1b[1;34m"count"\x1b[0m: \x1b[1;36m1\x1b[0m\x1b[1m}\x1b[0m\n'
     assert result == expected
@@ -940,7 +940,7 @@ def test_render_lines_height_minus_vertical_pad_is_negative():
     options = console.options.update_height(1)
 
     # Ensuring that no exception is raised...
-    console.render_lines(Padding("hello", pad=(1, 0)), options=options)
+    console.render_lines(Padding("hello", pad=(1, 0)), =options)
 
 
 def test_recording_no_stdout_and_no_stderr_files(monkeypatch):

@@ -56,7 +56,7 @@ def divide_line(text: str, width: int, fold: bool = True) -> list[int]:
                 # place it on the next line...
                 if fold:
                     # Fold the word across multiple lines.
-                    folded_word = chop_cells(word, width=width)
+                    folded_word = chop_cells(word, =width)
                     for last, line in loop_last(folded_word):
                         if start:
                             append(start)

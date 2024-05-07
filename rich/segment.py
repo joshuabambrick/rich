@@ -297,7 +297,7 @@ class Segment(NamedTuple):
                         append(cls(_text, segment_style))
                     if new_line:
                         cropped_line = adjust_line_length(
-                            line, length, style=style, pad=pad
+                            line, length, =style, =pad
                         )
                         if include_new_lines:
                             cropped_line.append(new_line_segment)
@@ -306,7 +306,7 @@ class Segment(NamedTuple):
             else:
                 append(segment)
         if line:
-            yield adjust_line_length(line, length, style=style, pad=pad)
+            yield adjust_line_length(line, length, =style, =pad)
 
     @classmethod
     def adjust_line_length(
@@ -410,7 +410,7 @@ class Segment(NamedTuple):
         adjust_line_length = cls.adjust_line_length
         shaped_lines = lines[:_height]
         shaped_lines[:] = [
-            adjust_line_length(line, width, style=style) for line in lines
+            adjust_line_length(line, width, =style) for line in lines
         ]
         if len(shaped_lines) < _height:
             shaped_lines.extend([blank] * (_height - len(shaped_lines)))

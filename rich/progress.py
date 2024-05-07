@@ -144,29 +144,24 @@ def track(
     )
     columns.extend(
         (
-            BarColumn(
-                style=style,
-                complete_style=complete_style,
-                finished_style=finished_style,
-                pulse_style=pulse_style,
-            ),
-            TaskProgressColumn(show_speed=show_speed),
+            BarColumn(=style, =complete_style, =finished_style, =pulse_style),
+            TaskProgressColumn(=show_speed),
             TimeRemainingColumn(elapsed_when_finished=True),
         )
     )
     progress = Progress(
         *columns,
-        auto_refresh=auto_refresh,
-        console=console,
-        transient=transient,
-        get_time=get_time,
+        =auto_refresh,
+        =console,
+        =transient,
+        =get_time,
         refresh_per_second=refresh_per_second or 10,
-        disable=disable,
+        =disable,
     )
 
     with progress:
         yield from progress.track(
-            sequence, total=total, description=description, update_period=update_period
+            sequence, =total, =description, =update_period
         )
 
 
@@ -332,27 +327,22 @@ def wrap_file(
     )
     columns.extend(
         (
-            BarColumn(
-                style=style,
-                complete_style=complete_style,
-                finished_style=finished_style,
-                pulse_style=pulse_style,
-            ),
+            BarColumn(=style, =complete_style, =finished_style, =pulse_style),
             DownloadColumn(),
             TimeRemainingColumn(),
         )
     )
     progress = Progress(
         *columns,
-        auto_refresh=auto_refresh,
-        console=console,
-        transient=transient,
-        get_time=get_time,
+        =auto_refresh,
+        =console,
+        =transient,
+        =get_time,
         refresh_per_second=refresh_per_second or 10,
-        disable=disable,
+        =disable,
     )
 
-    reader = progress.wrap_file(file, total=total, description=description)
+    reader = progress.wrap_file(file, =total, =description)
     return _ReadContext(progress, reader)
 
 
@@ -459,35 +449,30 @@ def open(
     )
     columns.extend(
         (
-            BarColumn(
-                style=style,
-                complete_style=complete_style,
-                finished_style=finished_style,
-                pulse_style=pulse_style,
-            ),
+            BarColumn(=style, =complete_style, =finished_style, =pulse_style),
             DownloadColumn(),
             TimeRemainingColumn(),
         )
     )
     progress = Progress(
         *columns,
-        auto_refresh=auto_refresh,
-        console=console,
-        transient=transient,
-        get_time=get_time,
+        =auto_refresh,
+        =console,
+        =transient,
+        =get_time,
         refresh_per_second=refresh_per_second or 10,
-        disable=disable,
+        =disable,
     )
 
     reader = progress.open(
         file,
-        mode=mode,
-        buffering=buffering,
-        encoding=encoding,
-        errors=errors,
-        newline=newline,
-        total=total,
-        description=description,
+        =mode,
+        =buffering,
+        =encoding,
+        =errors,
+        =newline,
+        =total,
+        =description,
     )
     return _ReadContext(progress, reader)  # type: ignore[return-value, type-var]
 
@@ -545,7 +530,7 @@ class RenderableColumn(ProgressColumn):
         self, renderable: RenderableType = "", *, table_column: Optional[Column] = None
     ):
         self.renderable = renderable
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def render(self, task: "Task") -> RenderableType:
         return self.renderable
@@ -569,13 +554,13 @@ class SpinnerColumn(ProgressColumn):
         finished_text: TextType = " ",
         table_column: Optional[Column] = None,
     ):
-        self.spinner = Spinner(spinner_name, style=style, speed=speed)
+        self.spinner = Spinner(spinner_name, =style, =speed)
         self.finished_text = (
             Text.from_markup(finished_text)
             if isinstance(finished_text, str)
             else finished_text
         )
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def set_spinner(
         self,
@@ -590,7 +575,7 @@ class SpinnerColumn(ProgressColumn):
             spinner_style (Optional[StyleType], optional): Spinner style. Defaults to "progress.spinner".
             speed (float, optional): Speed factor of spinner. Defaults to 1.0.
         """
-        self.spinner = Spinner(spinner_name, style=spinner_style, speed=speed)
+        self.spinner = Spinner(spinner_name, style=spinner_style, =speed)
 
     def render(self, task: "Task") -> RenderableType:
         text = (
@@ -621,7 +606,7 @@ class TextColumn(ProgressColumn):
         super().__init__(table_column=table_column or Column(no_wrap=True))
 
     def render(self, task: "Task") -> Text:
-        _text = self.text_format.format(task=task)
+        _text = self.text_format.format(=task)
         if self.markup:
             text = Text.from_markup(_text, style=self.style, justify=self.justify)
         else:
@@ -656,7 +641,7 @@ class BarColumn(ProgressColumn):
         self.complete_style = complete_style
         self.finished_style = finished_style
         self.pulse_style = pulse_style
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def render(self, task: "Task") -> ProgressBar:
         """Gets a progress bar widget for a task."""
@@ -713,12 +698,12 @@ class TaskProgressColumn(TextColumn):
         self.text_format_no_percentage = text_format_no_percentage
         self.show_speed = show_speed
         super().__init__(
-            text_format=text_format,
-            style=style,
-            justify=justify,
-            markup=markup,
-            highlighter=highlighter,
-            table_column=table_column,
+            =text_format,
+            =style,
+            =justify,
+            =markup,
+            =highlighter,
+            =table_column,
         )
 
     @classmethod
@@ -747,7 +732,7 @@ class TaskProgressColumn(TextColumn):
         text_format = (
             self.text_format_no_percentage if task.total is None else self.text_format
         )
-        _text = text_format.format(task=task)
+        _text = text_format.format(=task)
         if self.markup:
             text = Text.from_markup(_text, style=self.style, justify=self.justify)
         else:
@@ -776,7 +761,7 @@ class TimeRemainingColumn(ProgressColumn):
     ):
         self.compact = compact
         self.elapsed_when_finished = elapsed_when_finished
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def render(self, task: "Task") -> Text:
         """Show time remaining."""
@@ -788,10 +773,10 @@ class TimeRemainingColumn(ProgressColumn):
             style = "progress.remaining"
 
         if task.total is None:
-            return Text("", style=style)
+            return Text("", =style)
 
         if task_time is None:
-            return Text("--:--" if self.compact else "-:--:--", style=style)
+            return Text("--:--" if self.compact else "-:--:--", =style)
 
         # Based on https://github.com/tqdm/tqdm/blob/master/tqdm/std.py
         minutes, seconds = divmod(int(task_time), 60)
@@ -802,7 +787,7 @@ class TimeRemainingColumn(ProgressColumn):
         else:
             formatted = f"{hours:d}:{minutes:02d}:{seconds:02d}"
 
-        return Text(formatted, style=style)
+        return Text(formatted, =style)
 
 
 class FileSizeColumn(ProgressColumn):
@@ -837,7 +822,7 @@ class MofNCompleteColumn(ProgressColumn):
 
     def __init__(self, separator: str = "/", table_column: Optional[Column] = None):
         self.separator = separator
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def render(self, task: "Task") -> Text:
         """Show completed/total."""
@@ -861,7 +846,7 @@ class DownloadColumn(ProgressColumn):
         self, binary_units: bool = False, table_column: Optional[Column] = None
     ) -> None:
         self.binary_units = binary_units
-        super().__init__(table_column=table_column)
+        super().__init__(=table_column)
 
     def render(self, task: "Task") -> Text:
         """Calculate common unit for completed and total."""
@@ -1087,11 +1072,11 @@ class Progress(JupyterMixin):
         self._task_index: TaskID = TaskID(0)
         self.live = Live(
             console=console or get_console(),
-            auto_refresh=auto_refresh,
-            refresh_per_second=refresh_per_second,
-            transient=transient,
-            redirect_stdout=redirect_stdout,
-            redirect_stderr=redirect_stderr,
+            =auto_refresh,
+            =refresh_per_second,
+            =transient,
+            =redirect_stdout,
+            =redirect_stderr,
             get_renderable=self.get_renderable,
         )
         self.get_time = get_time or self.console.get_time
@@ -1200,9 +1185,9 @@ class Progress(JupyterMixin):
             total = float(length_hint(sequence)) or None
 
         if task_id is None:
-            task_id = self.add_task(description, total=total)
+            task_id = self.add_task(description, =total)
         else:
-            self.update(task_id, total=total)
+            self.update(task_id, =total)
 
         if self.live.auto_refresh:
             with _TrackThread(self, task_id, update_period) as track_thread:
@@ -1348,22 +1333,22 @@ class Progress(JupyterMixin):
 
         # update total of task or create new task
         if task_id is None:
-            task_id = self.add_task(description, total=total)
+            task_id = self.add_task(description, =total)
         else:
-            self.update(task_id, total=total)
+            self.update(task_id, =total)
 
         # open the file in binary mode,
-        handle = io.open(file, "rb", buffering=buffering)
+        handle = io.open(file, "rb", =buffering)
         reader = _Reader(handle, self, task_id, close_handle=True)
 
         # wrap the reader in a `TextIOWrapper` if text mode
         if mode in ("r", "rt"):
             return io.TextIOWrapper(
                 reader,
-                encoding=encoding,
-                errors=errors,
-                newline=newline,
-                line_buffering=line_buffering,
+                =encoding,
+                =errors,
+                =newline,
+                =line_buffering,
             )
 
         return reader
@@ -1566,7 +1551,7 @@ class Progress(JupyterMixin):
                 table.add_row(
                     *(
                         (
-                            column.format(task=task)
+                            column.format(=task)
                             if isinstance(column, str)
                             else column(task)
                         )
@@ -1610,8 +1595,8 @@ class Progress(JupyterMixin):
                 description,
                 total,
                 completed,
-                visible=visible,
-                fields=fields,
+                =visible,
+                =fields,
                 _get_time=self.get_time,
                 _lock=self._lock,
             )
@@ -1684,7 +1669,7 @@ if __name__ == "__main__":  # pragma: no coverage
         SpinnerColumn(),
         *Progress.get_default_columns(),
         TimeElapsedColumn(),
-        console=console,
+        =console,
         transient=False,
     ) as progress:
         task1 = progress.add_task("[red]Downloading", total=1000)

@@ -135,16 +135,16 @@ def _ipy_display_hook(
                 if _safe_isinstance(value, RichRenderable)
                 else Pretty(
                     value,
-                    overflow=overflow,
-                    indent_guides=indent_guides,
-                    max_length=max_length,
-                    max_string=max_string,
-                    max_depth=max_depth,
-                    expand_all=expand_all,
+                    =overflow,
+                    =indent_guides,
+                    =max_length,
+                    =max_string,
+                    =max_depth,
+                    =expand_all,
                     margin=12,
                 )
             ),
-            crop=crop,
+            =crop,
             new_line_start=True,
             end="",
         )
@@ -203,15 +203,15 @@ def install(
                     if _safe_isinstance(value, RichRenderable)
                     else Pretty(
                         value,
-                        overflow=overflow,
-                        indent_guides=indent_guides,
-                        max_length=max_length,
-                        max_string=max_string,
-                        max_depth=max_depth,
-                        expand_all=expand_all,
+                        =overflow,
+                        =indent_guides,
+                        =max_length,
+                        =max_string,
+                        =max_depth,
+                        =expand_all,
                     )
                 ),
-                crop=crop,
+                =crop,
             )
             builtins._ = value  # type: ignore[attr-defined]
 
@@ -230,12 +230,12 @@ def install(
                     return _ipy_display_hook(
                         value,
                         console=get_console(),
-                        overflow=overflow,
-                        indent_guides=indent_guides,
-                        max_length=max_length,
-                        max_string=max_string,
-                        max_depth=max_depth,
-                        expand_all=expand_all,
+                        =overflow,
+                        =indent_guides,
+                        =max_length,
+                        =max_string,
+                        =max_depth,
+                        =expand_all,
                     )
                 else:
                     return repr(value)
@@ -510,10 +510,10 @@ class _Line:
         if node.key_repr:
             new_line = yield _Line(
                 text=f"{node.key_repr}{node.key_separator}{node.open_brace}",
-                whitespace=whitespace,
+                =whitespace,
             )
         else:
-            new_line = yield _Line(text=node.open_brace, whitespace=whitespace)
+            new_line = yield _Line(text=node.open_brace, =whitespace)
         child_whitespace = self.whitespace + " " * indent_size
         tuple_of_one = node.is_tuple and len(node.children) == 1
         for last, child in loop_last(node.children):
@@ -529,7 +529,7 @@ class _Line:
 
         yield _Line(
             text=node.close_brace,
-            whitespace=whitespace,
+            =whitespace,
             suffix=self.suffix,
             last=self.last,
         )
@@ -666,7 +666,7 @@ def traverse(
                         node = Node(
                             open_brace=f"<{class_name} ",
                             close_brace=">",
-                            children=children,
+                            =children,
                             last=root,
                             separator=" ",
                         )
@@ -674,7 +674,7 @@ def traverse(
                         node = Node(
                             open_brace=f"{class_name}(",
                             close_brace=")",
-                            children=children,
+                            =children,
                             last=root,
                         )
                     for last, arg in loop_last(args):
@@ -709,7 +709,7 @@ def traverse(
                     node = Node(
                         open_brace=f"{obj.__class__.__name__}(",
                         close_brace=")",
-                        children=children,
+                        =children,
                         last=root,
                     )
 
@@ -760,7 +760,7 @@ def traverse(
                 node = Node(
                     open_brace=f"{obj.__class__.__name__}(",
                     close_brace=")",
-                    children=children,
+                    =children,
                     last=root,
                     empty=f"{obj.__class__.__name__}()",
                 )
@@ -789,7 +789,7 @@ def traverse(
                 node = Node(
                     open_brace=f"{class_name}(",
                     close_brace=")",
-                    children=children,
+                    =children,
                     empty=f"{class_name}()",
                 )
                 for last, (key, value) in loop_last(obj._asdict().items()):
@@ -815,12 +815,7 @@ def traverse(
                 node = Node(value_repr=to_repr(obj), last=root)
             elif obj:
                 children = []
-                node = Node(
-                    open_brace=open_brace,
-                    close_brace=close_brace,
-                    children=children,
-                    last=root,
-                )
+                node = Node(=open_brace, =close_brace, =children, last=root)
                 append = children.append
                 num_items = len(obj)
                 last_item_index = num_items - 1
@@ -845,7 +840,7 @@ def traverse(
                 if max_length is not None and num_items > max_length:
                     append(Node(value_repr=f"... +{num_items - max_length}", last=True))
             else:
-                node = Node(empty=empty, children=[], last=root)
+                node = Node(=empty, children=[], last=root)
 
             pop_visited(obj_id)
         else:
@@ -889,12 +884,8 @@ def pretty_repr(
     if _safe_isinstance(_object, Node):
         node = _object
     else:
-        node = traverse(
-            _object, max_length=max_length, max_string=max_string, max_depth=max_depth
-        )
-    repr_str: str = node.render(
-        max_width=max_width, indent_size=indent_size, expand_all=expand_all
-    )
+        node = traverse(_object, =max_length, =max_string, =max_depth)
+    repr_str: str = node.render(=max_width, =indent_size, =expand_all)
     return repr_str
 
 
@@ -924,11 +915,11 @@ def pprint(
     _console.print(
         Pretty(
             _object,
-            max_length=max_length,
-            max_string=max_string,
-            max_depth=max_depth,
-            indent_guides=indent_guides,
-            expand_all=expand_all,
+            =max_length,
+            =max_string,
+            =max_depth,
+            =indent_guides,
+            =expand_all,
             overflow="ignore",
         ),
         soft_wrap=True,

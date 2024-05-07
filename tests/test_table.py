@@ -34,7 +34,7 @@ def render_tables():
     assert Measurement.get(console, console.options, table) == Measurement(41, 48)
 
     for width in range(10, 60, 5):
-        console.print(table, width=width)
+        console.print(table, =width)
 
     table.expand = False
     console.print(table, justify="left")
@@ -104,7 +104,7 @@ def test_not_renderable():
 def test_init_append_column():
     header_names = ["header1", "header2", "header3"]
     test_columns = [
-        Column(_index=index, header=header) for index, header in enumerate(header_names)
+        Column(_index=index, =header) for index, header in enumerate(header_names)
     ]
 
     # Test appending of strings for header names
@@ -194,7 +194,7 @@ def test_vertical_align_top():
 def test_table_show_header_false_substitution(box, result):
     """When the box style is one with a custom header edge, it should be substituted for
     the equivalent box that does not have a custom header when show_header=False"""
-    table = Table(show_header=False, box=box)
+    table = Table(show_header=False, =box)
     table.add_column()
     table.add_column()
 

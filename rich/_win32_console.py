@@ -486,9 +486,9 @@ class LegacyWindowsTerm:
         """Erase all content from the cursor position to the start of that line"""
         row, col = self.cursor_position
         start = WindowsCoordinates(row, 0)
-        FillConsoleOutputCharacter(self._handle, " ", length=col, start=start)
+        FillConsoleOutputCharacter(self._handle, " ", length=col, =start)
         FillConsoleOutputAttribute(
-            self._handle, self._default_attrs, length=col, start=start
+            self._handle, self._default_attrs, length=col, =start
         )
 
     def move_cursor_up(self) -> None:
@@ -521,7 +521,7 @@ class LegacyWindowsTerm:
         else:
             col += 1
         SetConsoleCursorPosition(
-            self._handle, coords=WindowsCoordinates(row=row, col=col)
+            self._handle, coords=WindowsCoordinates(=row, =col)
         )
 
     def move_cursor_to_column(self, column: int) -> None:
@@ -542,7 +542,7 @@ class LegacyWindowsTerm:
         else:
             col -= 1
         SetConsoleCursorPosition(
-            self._handle, coords=WindowsCoordinates(row=row, col=col)
+            self._handle, coords=WindowsCoordinates(=row, =col)
         )
 
     def hide_cursor(self) -> None:
@@ -569,7 +569,7 @@ class LegacyWindowsTerm:
     def _get_cursor_size(self) -> int:
         """Get the percentage of the character cell that is filled by the cursor"""
         cursor_info = CONSOLE_CURSOR_INFO()
-        GetConsoleCursorInfo(self._handle, cursor_info=cursor_info)
+        GetConsoleCursorInfo(self._handle, =cursor_info)
         return int(cursor_info.dwSize)
 
 

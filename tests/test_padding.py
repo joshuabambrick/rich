@@ -49,11 +49,11 @@ def test_rich_console():
     )
 
     expected_outputs = [
-        Segment(renderable, style=style),
-        Segment(" " * (20 - len(renderable)), style=style),
+        Segment(renderable, =style),
+        Segment(" " * (20 - len(renderable)), =style),
         Segment("\n", style=None),
     ]
-    padding_generator = Padding(renderable, style=style).__rich_console__(
+    padding_generator = Padding(renderable, =style).__rich_console__(
         Console(), options
     )
     for output, expected in zip(padding_generator, expected_outputs):

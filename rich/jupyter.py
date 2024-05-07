@@ -76,7 +76,7 @@ def _render_segments(segments: Iterable[Segment]) -> str:
         append_fragment(text)
 
     code = "".join(fragments)
-    html = JUPYTER_HTML_FORMAT.format(code=code)
+    html = JUPYTER_HTML_FORMAT.format(=code)
 
     return html
 

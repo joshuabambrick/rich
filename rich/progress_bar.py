@@ -142,7 +142,7 @@ class ProgressBar(JupyterMixin):
         back_style = console.get_style(self.style, default="black")
 
         pulse_segments = self._get_pulse_segments(
-            fore_style, back_style, console.color_system, console.no_color, ascii=ascii
+            fore_style, back_style, console.color_system, console.no_color, =ascii
         )
         segment_count = len(pulse_segments)
         current_time = (
@@ -160,7 +160,7 @@ class ProgressBar(JupyterMixin):
         ascii = options.legacy_windows or options.ascii_only
         should_pulse = self.pulse or self.total is None
         if should_pulse:
-            yield from self._render_pulse(console, width, ascii=ascii)
+            yield from self._render_pulse(console, width, =ascii)
             return
 
         completed: Optional[float] = (

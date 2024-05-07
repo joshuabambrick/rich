@@ -26,7 +26,7 @@ def run_steps(name, step_times, app_steps_task_id):
     for idx, step_time in enumerate(step_times):
         # add progress bar for this step (time elapsed + spinner)
         action = step_actions[idx]
-        step_task_id = step_progress.add_task("", action=action, name=name)
+        step_task_id = step_progress.add_task("", =action, =name)
 
         # run steps, update progress
         for _ in range(step_time):
@@ -97,7 +97,7 @@ with Live(progress_group):
         # add progress bar for steps of this app, and run the steps
         current_task_id = current_app_progress.add_task("Installing app %s" % name)
         app_steps_task_id = app_steps_progress.add_task(
-            "", total=len(step_times), name=name
+            "", total=len(step_times), =name
         )
         run_steps(name, step_times, app_steps_task_id)
 

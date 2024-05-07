@@ -421,7 +421,7 @@ class ScreenContext:
     ) -> None:
         self.console = console
         self.hide_cursor = hide_cursor
-        self.screen = Screen(style=style)
+        self.screen = Screen(=style)
         self._changed = False
 
     def update(
@@ -508,7 +508,7 @@ def group(fit: bool = True) -> Callable[..., Callable[..., Group]]:
         @wraps(method)
         def _replace(*args: Any, **kwargs: Any) -> Group:
             renderables = method(*args, **kwargs)
-            return Group(*renderables, fit=fit)
+            return Group(*renderables, =fit)
 
         return _replace
 
@@ -888,7 +888,7 @@ class Console:
             theme (Theme): A theme instance.
             inherit (bool, optional): Inherit existing styles. Defaults to True.
         """
-        self._theme_stack.push_theme(theme, inherit=inherit)
+        self._theme_stack.push_theme(theme, =inherit)
 
     def pop_theme(self) -> None:
         """Remove theme from top of stack, restoring previous theme."""
@@ -1124,7 +1124,7 @@ class Console:
         Returns:
             PagerContext: A context manager.
         """
-        return PagerContext(self, pager=pager, styles=styles, links=links)
+        return PagerContext(self, =pager, =styles, =links)
 
     def line(self, count: int = 1) -> None:
         """Write new line(s).
@@ -1173,10 +1173,10 @@ class Console:
         status_renderable = Status(
             status,
             console=self,
-            spinner=spinner,
-            spinner_style=spinner_style,
-            speed=speed,
-            refresh_per_second=refresh_per_second,
+            =spinner,
+            =spinner_style,
+            =speed,
+            =refresh_per_second,
         )
         return status_renderable
 
@@ -1265,7 +1265,7 @@ class Console:
         Returns:
             ~ScreenContext: Context which enables alternate screen on enter, and disables it on exit.
         """
-        return ScreenContext(self, hide_cursor=hide_cursor, style=style or "")
+        return ScreenContext(self, =hide_cursor, style=style or "")
 
     def measure(
         self, renderable: RenderableType, *, options: Optional[ConsoleOptions] = None
@@ -1375,8 +1375,8 @@ class Console:
                         _rendered,
                         render_options.max_width,
                         include_new_lines=new_lines,
-                        pad=pad,
-                        style=style,
+                        =pad,
+                        =style,
                     ),
                     None,
                     render_height,
@@ -1429,7 +1429,7 @@ class Console:
         if markup_enabled:
             rich_text = render_markup(
                 text,
-                style=style,
+                =style,
                 emoji=emoji_enabled,
                 emoji_variant=self._emoji_variant,
             )
@@ -1440,9 +1440,9 @@ class Console:
                 _emoji_replace(text, default_variant=self._emoji_variant)
                 if emoji_enabled
                 else text,
-                justify=justify,
-                overflow=overflow,
-                style=style,
+                =justify,
+                =overflow,
+                =style,
             )
 
         _highlighter = (highlighter or self.highlighter) if highlight_enabled else None
@@ -1527,7 +1527,7 @@ class Console:
 
         def check_text() -> None:
             if text:
-                sep_text = Text(sep, justify=justify, end=end)
+                sep_text = Text(sep, =justify, =end)
                 append(sep_text.join(text))
                 text.clear()
 
@@ -1536,7 +1536,7 @@ class Console:
             if isinstance(renderable, str):
                 append_text(
                     self.render_str(
-                        renderable, emoji=emoji, markup=markup, highlighter=_highlighter
+                        renderable, =emoji, =markup, highlighter=_highlighter
                     )
                 )
             elif isinstance(renderable, Text):
@@ -1576,7 +1576,7 @@ class Console:
         """
         from .rule import Rule
 
-        rule = Rule(title=title, characters=characters, style=style, align=align)
+        rule = Rule(=title, =characters, =style, =align)
         self.print(rule)
 
     def control(self, *control: Control) -> None:
@@ -1611,14 +1611,14 @@ class Console:
         raw_output: str = sep.join(str(_object) for _object in objects)
         self.print(
             raw_output,
-            style=style,
-            highlight=highlight,
+            =style,
+            =highlight,
             emoji=False,
             markup=False,
             no_wrap=True,
             overflow="ignore",
             crop=False,
-            end=end,
+            =end,
         )
 
     def print(
@@ -1675,21 +1675,21 @@ class Console:
                 objects,
                 sep,
                 end,
-                justify=justify,
-                emoji=emoji,
-                markup=markup,
-                highlight=highlight,
+                =justify,
+                =emoji,
+                =markup,
+                =highlight,
             )
             for hook in render_hooks:
                 renderables = hook.process_renderables(renderables)
             render_options = self.options.update(
-                justify=justify,
-                overflow=overflow,
+                =justify,
+                =overflow,
                 width=min(width, self.width) if width is not None else NO_CHANGE,
-                height=height,
-                no_wrap=no_wrap,
-                markup=markup,
-                highlight=highlight,
+                =height,
+                =no_wrap,
+                =markup,
+                =highlight,
             )
 
             new_segments: List[Segment] = []
@@ -1754,14 +1754,14 @@ class Console:
         if json is None:
             json_renderable = JSON.from_data(
                 data,
-                indent=indent,
-                highlight=highlight,
-                skip_keys=skip_keys,
-                ensure_ascii=ensure_ascii,
-                check_circular=check_circular,
-                allow_nan=allow_nan,
-                default=default,
-                sort_keys=sort_keys,
+                =indent,
+                =highlight,
+                =skip_keys,
+                =ensure_ascii,
+                =check_circular,
+                =allow_nan,
+                =default,
+                =sort_keys,
             )
         else:
             if not isinstance(json, str):
@@ -1770,14 +1770,14 @@ class Console:
                 )
             json_renderable = JSON(
                 json,
-                indent=indent,
-                highlight=highlight,
-                skip_keys=skip_keys,
-                ensure_ascii=ensure_ascii,
-                check_circular=check_circular,
-                allow_nan=allow_nan,
-                default=default,
-                sort_keys=sort_keys,
+                =indent,
+                =highlight,
+                =skip_keys,
+                =ensure_ascii,
+                =check_circular,
+                =allow_nan,
+                =default,
+                =sort_keys,
             )
         self.print(json_renderable, soft_wrap=True)
 
@@ -1860,13 +1860,13 @@ class Console:
         from .traceback import Traceback
 
         traceback = Traceback(
-            width=width,
-            extra_lines=extra_lines,
-            theme=theme,
-            word_wrap=word_wrap,
-            show_locals=show_locals,
-            suppress=suppress,
-            max_frames=max_frames,
+            =width,
+            =extra_lines,
+            =theme,
+            =word_wrap,
+            =show_locals,
+            =suppress,
+            =max_frames,
         )
         self.print(traceback)
 
@@ -1943,10 +1943,10 @@ class Console:
                 objects,
                 sep,
                 end,
-                justify=justify,
-                emoji=emoji,
-                markup=markup,
-                highlight=highlight,
+                =justify,
+                =emoji,
+                =markup,
+                =highlight,
             )
             if style is not None:
                 renderables = [Styled(renderable, style) for renderable in renderables]
@@ -1967,9 +1967,9 @@ class Console:
                     self,
                     renderables,
                     log_time=self.get_datetime(),
-                    path=path,
-                    line_no=line_no,
-                    link_path=link_path,
+                    =path,
+                    =line_no,
+                    =link_path,
                 )
             ]
             for hook in render_hooks:
@@ -2077,11 +2077,7 @@ class Console:
         for text, style, control in buffer:
             if style:
                 append(
-                    style.render(
-                        text,
-                        color_system=color_system,
-                        legacy_windows=legacy_windows,
-                    )
+                    style.render(text, =color_system, =legacy_windows)
                 )
             elif not (not_terminal and control):
                 append(text)
@@ -2113,9 +2109,9 @@ class Console:
             str: Text read from stdin.
         """
         if prompt:
-            self.print(prompt, markup=markup, emoji=emoji, end="")
+            self.print(prompt, =markup, =emoji, end="")
         if password:
-            result = getpass("", stream=stream)
+            result = getpass("", =stream)
         else:
             if stream:
                 result = stream.readline()
@@ -2165,7 +2161,7 @@ class Console:
                 Defaults to ``False``.
 
         """
-        text = self.export_text(clear=clear, styles=styles)
+        text = self.export_text(=clear, =styles)
         with open(path, "wt", encoding="utf-8") as write_file:
             write_file.write(text)
 
@@ -2236,7 +2232,7 @@ class Console:
 
             rendered_code = render_code_format.format(
                 code="".join(fragments),
-                stylesheet=stylesheet,
+                =stylesheet,
                 foreground=_theme.foreground_color.hex,
                 background=_theme.background_color.hex,
             )
@@ -2266,12 +2262,7 @@ class Console:
                 Defaults to False.
 
         """
-        html = self.export_html(
-            theme=theme,
-            clear=clear,
-            code_format=code_format,
-            inline_styles=inline_styles,
-        )
+        html = self.export_html(=theme, =clear, =code_format, =inline_styles)
         with open(path, "wt", encoding="utf-8") as write_file:
             write_file.write(html)
 
@@ -2508,21 +2499,21 @@ class Console:
         """
 
         svg = code_format.format(
-            unique_id=unique_id,
-            char_width=char_width,
-            char_height=char_height,
-            line_height=line_height,
+            =unique_id,
+            =char_width,
+            =char_height,
+            =line_height,
             terminal_width=char_width * width - 1,
             terminal_height=(y + 1) * line_height - 1,
             width=terminal_width + margin_width,
             height=terminal_height + margin_height,
             terminal_x=margin_left + padding_left,
             terminal_y=margin_top + padding_top,
-            styles=styles,
-            chrome=chrome,
-            backgrounds=backgrounds,
-            matrix=matrix,
-            lines=lines,
+            =styles,
+            =chrome,
+            =backgrounds,
+            =matrix,
+            =lines,
         )
         return svg
 
@@ -2554,12 +2545,12 @@ class Console:
                 ids). If not set, this defaults to a computed value based on the recorded content.
         """
         svg = self.export_svg(
-            title=title,
-            theme=theme,
-            clear=clear,
-            code_format=code_format,
-            font_aspect_ratio=font_aspect_ratio,
-            unique_id=unique_id,
+            =title,
+            =theme,
+            =clear,
+            =code_format,
+            =font_aspect_ratio,
+            =unique_id,
         )
         with open(path, "wt", encoding="utf-8") as write_file:
             write_file.write(svg)

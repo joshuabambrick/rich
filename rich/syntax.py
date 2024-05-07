@@ -339,26 +339,26 @@ class Syntax(JupyterMixin):
         Returns:
             [Syntax]: A Syntax object that may be printed to the console
         """
-        code = Path(path).read_text(encoding=encoding)
+        code = Path(path).read_text(=encoding)
 
         if not lexer:
-            lexer = cls.guess_lexer(path, code=code)
+            lexer = cls.guess_lexer(path, =code)
 
         return cls(
             code,
             lexer,
-            theme=theme,
-            dedent=dedent,
-            line_numbers=line_numbers,
-            line_range=line_range,
-            start_line=start_line,
-            highlight_lines=highlight_lines,
-            code_width=code_width,
-            tab_size=tab_size,
-            word_wrap=word_wrap,
-            background_color=background_color,
-            indent_guides=indent_guides,
-            padding=padding,
+            =theme,
+            =dedent,
+            =line_numbers,
+            =line_range,
+            =start_line,
+            =highlight_lines,
+            =code_width,
+            =tab_size,
+            =word_wrap,
+            =background_color,
+            =indent_guides,
+            =padding,
         )
 
     @classmethod
@@ -470,7 +470,7 @@ class Syntax(JupyterMixin):
         )
 
         text = Text(
-            justify=justify,
+            =justify,
             style=base_style,
             tab_size=self.tab_size,
             no_wrap=not self.word_wrap,
@@ -659,7 +659,7 @@ class Syntax(JupyterMixin):
                 + self.background_style
             )
             if self.indent_guides and not options.ascii_only:
-                text = text.with_indent_guides(self.tab_size, style=style)
+                text = text.with_indent_guides(self.tab_size, =style)
                 text.overflow = "crop"
             if style.transparent_background:
                 yield from console.render(
@@ -933,7 +933,7 @@ if __name__ == "__main__":  # pragma: no cover
     if args.path == "-":
         code = sys.stdin.read()
         syntax = Syntax(
-            code=code,
+            =code,
             lexer=args.lexer_name,
             line_numbers=args.line_numbers,
             word_wrap=args.word_wrap,

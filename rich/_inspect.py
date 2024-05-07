@@ -192,7 +192,7 @@ class Inspect(JupyterMixin):
 
                 _signature_text = self._get_signature(key, value)
                 if _signature_text is None:
-                    add_row(key_text, Pretty(value, highlighter=highlighter))
+                    add_row(key_text, Pretty(value, =highlighter))
                 else:
                     if self.docs:
                         docs = self._get_formatted_doc(value)
@@ -204,7 +204,7 @@ class Inspect(JupyterMixin):
 
                     add_row(key_text, _signature_text)
             else:
-                add_row(key_text, Pretty(value, highlighter=highlighter))
+                add_row(key_text, Pretty(value, =highlighter))
         if items_table.row_count:
             yield items_table
         elif not_shown_count:

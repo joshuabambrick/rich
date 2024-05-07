@@ -390,7 +390,7 @@ class Color(NamedTuple):
         return cls(
             name=f"color({number})",
             type=(ColorType.STANDARD if number < 16 else ColorType.EIGHT_BIT),
-            number=number,
+            =number,
         )
 
     @classmethod
@@ -403,7 +403,7 @@ class Color(NamedTuple):
         Returns:
             Color: A new color object.
         """
-        return cls(name=triplet.hex, type=ColorType.TRUECOLOR, triplet=triplet)
+        return cls(name=triplet.hex, type=ColorType.TRUECOLOR, =triplet)
 
     @classmethod
     def from_rgb(cls, red: float, green: float, blue: float) -> "Color":
@@ -455,7 +455,7 @@ class Color(NamedTuple):
             triplet = ColorTriplet(
                 int(color_24[0:2], 16), int(color_24[2:4], 16), int(color_24[4:6], 16)
             )
-            return cls(color, ColorType.TRUECOLOR, triplet=triplet)
+            return cls(color, ColorType.TRUECOLOR, =triplet)
 
         elif color_8:
             number = int(color_8)
@@ -464,7 +464,7 @@ class Color(NamedTuple):
             return cls(
                 color,
                 type=(ColorType.STANDARD if number < 16 else ColorType.EIGHT_BIT),
-                number=number,
+                =number,
             )
 
         else:  #  color_rgb:
@@ -479,7 +479,7 @@ class Color(NamedTuple):
                 raise ColorParseError(
                     f"color components must be <= 255 in {original_color!r}"
                 )
-            return cls(color, ColorType.TRUECOLOR, triplet=triplet)
+            return cls(color, ColorType.TRUECOLOR, =triplet)
 
     @lru_cache(maxsize=1024)
     def get_ansi_codes(self, foreground: bool = True) -> Tuple[str, ...]:

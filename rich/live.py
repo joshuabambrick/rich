@@ -85,7 +85,7 @@ class Live(JupyterMixin, RenderHook):
         self.vertical_overflow = vertical_overflow
         self._get_renderable = get_renderable
         self._live_render = LiveRender(
-            self.get_renderable(), vertical_overflow=vertical_overflow
+            self.get_renderable(), =vertical_overflow
         )
 
     @property
@@ -339,7 +339,7 @@ if __name__ == "__main__":  # pragma: no cover
         "THB",
         "VND",
     ]
-    with Live(console=console) as live_table:
+    with Live(=console) as live_table:
         exchange_rate_dict: Dict[Tuple[str, str], float] = {}
 
         for index in range(100):

@@ -228,7 +228,7 @@ class HorizontalRule(MarkdownElement):
         self, console: Console, options: ConsoleOptions
     ) -> RenderResult:
         style = console.get_style("markdown.hr", default="none")
-        yield Rule(style=style)
+        yield Rule(=style)
 
 
 class TableElement(MarkdownElement):
@@ -327,10 +327,10 @@ class TableDataElement(MarkdownElement):
             justify = "default"
 
         assert justify in get_args(JustifyMethod)
-        return cls(justify=justify)
+        return cls(=justify)
 
     def __init__(self, justify: JustifyMethod) -> None:
-        self.content: Text = Text("", justify=justify)
+        self.content: Text = Text("", =justify)
         self.justify = justify
 
     def on_text(self, context: "MarkdownContext", text: TextType) -> None:

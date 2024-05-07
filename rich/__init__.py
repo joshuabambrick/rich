@@ -70,8 +70,8 @@ def print(
     """
     from .console import Console
 
-    write_console = get_console() if file is None else Console(file=file)
-    return write_console.print(*objects, sep=sep, end=end)
+    write_console = get_console() if file is None else Console(=file)
+    return write_console.print(*objects, =sep, =end)
 
 
 def print_json(
@@ -105,15 +105,15 @@ def print_json(
 
     get_console().print_json(
         json,
-        data=data,
-        indent=indent,
-        highlight=highlight,
-        skip_keys=skip_keys,
-        ensure_ascii=ensure_ascii,
-        check_circular=check_circular,
-        allow_nan=allow_nan,
-        default=default,
-        sort_keys=sort_keys,
+        =data,
+        =indent,
+        =highlight,
+        =skip_keys,
+        =ensure_ascii,
+        =check_circular,
+        =allow_nan,
+        =default,
+        =sort_keys,
     )
 
 
@@ -160,15 +160,15 @@ def inspect(
 
     _inspect = Inspect(
         obj,
-        title=title,
+        =title,
         help=is_inspect or help,
         methods=is_inspect or methods,
         docs=is_inspect or docs,
-        private=private,
-        dunder=dunder,
-        sort=sort,
-        all=all,
-        value=value,
+        =private,
+        =dunder,
+        =sort,
+        =all,
+        =value,
     )
     _console.print(_inspect)
 

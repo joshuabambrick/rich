@@ -242,7 +242,7 @@ class Table(JupyterMixin):
         append_column = self.columns.append
         for header in headers:
             if isinstance(header, str):
-                self.add_column(header=header)
+                self.add_column(=header)
             else:
                 header._index = len(self.columns)
                 append_column(header)
@@ -271,13 +271,13 @@ class Table(JupyterMixin):
         return cls(
             *headers,
             box=None,
-            padding=padding,
-            collapse_padding=collapse_padding,
+            =padding,
+            =collapse_padding,
             show_header=False,
             show_footer=False,
             show_edge=False,
-            pad_edge=pad_edge,
-            expand=expand,
+            =pad_edge,
+            =expand,
         )
 
     @property
@@ -398,19 +398,19 @@ class Table(JupyterMixin):
 
         column = Column(
             _index=len(self.columns),
-            header=header,
-            footer=footer,
+            =header,
+            =footer,
             header_style=header_style or "",
             footer_style=footer_style or "",
             style=style or "",
-            justify=justify,
-            vertical=vertical,
-            overflow=overflow,
-            width=width,
-            min_width=min_width,
-            max_width=max_width,
-            ratio=ratio,
-            no_wrap=no_wrap,
+            =justify,
+            =vertical,
+            =overflow,
+            =width,
+            =min_width,
+            =max_width,
+            =ratio,
+            =no_wrap,
         )
         self.columns.append(column)
 
@@ -459,7 +459,7 @@ class Table(JupyterMixin):
                 raise errors.NotRenderableError(
                     f"unable to render {type(renderable).__name__}; a string or other renderable object is required"
                 )
-        self.rows.append(Row(style=style, end_section=end_section))
+        self.rows.append(Row(=style, =end_section))
 
     def add_section(self) -> None:
         """Add a new section (draw a line after current row)."""
@@ -492,12 +492,12 @@ class Table(JupyterMixin):
             text: TextType, style: StyleType, justify: "JustifyMethod" = "center"
         ) -> "RenderResult":
             render_text = (
-                console.render_str(text, style=style, highlight=False)
+                console.render_str(text, =style, highlight=False)
                 if isinstance(text, str)
                 else text
             )
             return console.render(
-                render_text, options=render_options.update(justify=justify)
+                render_text, options=render_options.update(=justify)
             )
 
         if self.title:
@@ -813,7 +813,7 @@ class Table(JupyterMixin):
                 )
             for width, cell, column in zip(widths, row_cell, columns):
                 render_options = options.update(
-                    width=width,
+                    =width,
                     justify=column.justify,
                     no_wrap=column.no_wrap,
                     overflow=column.overflow,

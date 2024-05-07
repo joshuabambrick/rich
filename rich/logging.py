@@ -84,15 +84,15 @@ class RichHandler(Handler):
         log_time_format: Union[str, FormatTimeCallable] = "[%x %X]",
         keywords: Optional[List[str]] = None,
     ) -> None:
-        super().__init__(level=level)
+        super().__init__(=level)
         self.console = console or get_console()
         self.highlighter = highlighter or self.HIGHLIGHTER_CLASS()
         self._log_render = LogRender(
-            show_time=show_time,
-            show_level=show_level,
-            show_path=show_path,
+            =show_time,
+            =show_level,
+            =show_path,
             time_format=log_time_format,
-            omit_repeated_times=omit_repeated_times,
+            =omit_repeated_times,
             level_width=None,
         )
         self.enable_link_path = enable_link_path
@@ -157,9 +157,7 @@ class RichHandler(Handler):
                 message = formatter.formatMessage(record)
 
         message_renderable = self.render_message(record, message)
-        log_renderable = self.render(
-            record=record, traceback=traceback, message_renderable=message_renderable
-        )
+        log_renderable = self.render(=record, =traceback, =message_renderable)
         if isinstance(self.console.file, NullFile):
             # Handles pythonw, where stdout/stderr are null, and we return NullFile
             # instance from Console.file. In this case, we still want to make a log record
@@ -221,10 +219,10 @@ class RichHandler(Handler):
         log_renderable = self._log_render(
             self.console,
             [message_renderable] if not traceback else [message_renderable, traceback],
-            log_time=log_time,
-            time_format=time_format,
-            level=level,
-            path=path,
+            =log_time,
+            =time_format,
+            =level,
+            =path,
             line_no=record.lineno,
             link_path=record.pathname if self.enable_link_path else None,
         )

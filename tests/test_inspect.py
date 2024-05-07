@@ -50,8 +50,8 @@ skip_pypy3 = pytest.mark.skipif(
 
 
 def render(obj, methods=False, value=False, width=50) -> str:
-    console = Console(file=io.StringIO(), width=width, legacy_windows=False)
-    inspect(obj, console=console, methods=methods, value=value)
+    console = Console(file=io.StringIO(), =width, legacy_windows=False)
+    inspect(obj, =console, =methods, =value)
     return console.file.getvalue()
 
 
@@ -93,7 +93,7 @@ def test_render():
     console = Console(width=100, file=io.StringIO(), legacy_windows=False)
 
     foo = Foo("hello")
-    inspect(foo, console=console, all=True, value=False)
+    inspect(foo, =console, all=True, value=False)
     result = console.file.getvalue()
     print(repr(result))
     expected = "╭────────────── <class 'tests.test_inspect.Foo'> ──────────────╮\n│ Foo test                                                     │\n│                                                              │\n│   broken = InspectError()                                    │\n│ __init__ = def __init__(foo: int) -> None: constructor docs. │\n│   method = def method(a, b) -> str: Multi line               │\n╰──────────────────────────────────────────────────────────────╯\n"

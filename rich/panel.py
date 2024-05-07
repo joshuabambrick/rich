@@ -90,17 +90,17 @@ class Panel(JupyterMixin):
         return cls(
             renderable,
             box,
-            title=title,
-            title_align=title_align,
-            subtitle=subtitle,
-            subtitle_align=subtitle_align,
-            safe_box=safe_box,
-            style=style,
-            border_style=border_style,
-            width=width,
-            height=height,
-            padding=padding,
-            highlight=highlight,
+            =title,
+            =title_align,
+            =subtitle,
+            =subtitle_align,
+            =safe_box,
+            =style,
+            =border_style,
+            =width,
+            =height,
+            =padding,
+            =highlight,
             expand=False,
         )
 
@@ -221,7 +221,7 @@ class Panel(JupyterMixin):
         child_options = options.update(
             width=child_width, height=child_height, highlight=self.highlight
         )
-        lines = console.render_lines(renderable, child_options, style=style)
+        lines = console.render_lines(renderable, child_options, =style)
 
         line_start = Segment(box.mid_left, border_style)
         line_end = Segment(f"{box.mid_right}", border_style)

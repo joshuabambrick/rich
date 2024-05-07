@@ -71,7 +71,7 @@ def test_rule_cjk():
 )
 def test_rule_not_enough_space_for_title_text(align, outcome):
     console = Console(width=3, file=io.StringIO(), record=True)
-    console.rule("Hello!", align=align)
+    console.rule("Hello!", =align)
     assert console.file.getvalue() == outcome
 
 
@@ -84,7 +84,7 @@ def test_rule_center_aligned_title_not_enough_space_for_rule():
 @pytest.mark.parametrize("align", ["left", "right"])
 def test_rule_side_aligned_not_enough_space_for_rule(align):
     console = Console(width=2, file=io.StringIO(), record=True)
-    console.rule("ABCD", align=align)
+    console.rule("ABCD", =align)
     assert console.file.getvalue() == "──\n"
 
 
@@ -98,7 +98,7 @@ def test_rule_side_aligned_not_enough_space_for_rule(align):
 )
 def test_rule_just_enough_width_available_for_title(align, outcome):
     console = Console(width=5, file=io.StringIO(), record=True)
-    console.rule("ABCD", align=align)
+    console.rule("ABCD", =align)
     assert console.file.getvalue() == outcome
 
 

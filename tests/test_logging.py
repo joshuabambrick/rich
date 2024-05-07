@@ -41,7 +41,7 @@ def test_exception():
         _environ={},
     )
     handler_with_tracebacks = RichHandler(
-        console=console, enable_link_path=False, rich_tracebacks=True
+        =console, enable_link_path=False, rich_tracebacks=True
     )
     formatter = logging.Formatter("FORMATTER %(message)s %(asctime)s")
     handler_with_tracebacks.setFormatter(formatter)
@@ -70,7 +70,7 @@ def test_exception_with_extra_lines():
         _environ={},
     )
     handler_extra_lines = RichHandler(
-        console=console,
+        =console,
         enable_link_path=False,
         markup=True,
         rich_tracebacks=True,
@@ -100,7 +100,7 @@ def test_stderr_and_stdout_are_none(monkeypatch):
     monkeypatch.setattr("sys.stderr", None)
 
     console = Console(_environ={})
-    target_handler = RichHandler(console=console)
+    target_handler = RichHandler(=console)
     actual_record: Optional[logging.LogRecord] = None
 
     def mock_handle_error(record):
@@ -130,7 +130,7 @@ def test_markup_and_highlight():
         color_system="truecolor",
         _environ={},
     )
-    handler = RichHandler(console=console)
+    handler = RichHandler(=console)
 
     # Check defaults are as expected
     assert handler.highlighter

@@ -283,7 +283,7 @@ class Text(JupyterMixin):
         """
         from .markup import render
 
-        rendered_text = render(text, style, emoji=emoji, emoji_variant=emoji_variant)
+        rendered_text = render(text, style, =emoji, =emoji_variant)
         rendered_text.justify = justify
         rendered_text.overflow = overflow
         rendered_text.end = end
@@ -316,12 +316,12 @@ class Text(JupyterMixin):
 
         joiner = Text(
             "\n",
-            justify=justify,
-            overflow=overflow,
-            no_wrap=no_wrap,
-            end=end,
-            tab_size=tab_size,
-            style=style,
+            =justify,
+            =overflow,
+            =no_wrap,
+            =end,
+            =tab_size,
+            =style,
         )
         decoder = AnsiDecoder()
         result = joiner.join(line for line in decoder.decode(text))
@@ -348,7 +348,7 @@ class Text(JupyterMixin):
         Returns:
             Text: A text instance with a style applied to the entire string.
         """
-        styled_text = cls(text, justify=justify, overflow=overflow)
+        styled_text = cls(text, =justify, =overflow)
         styled_text.stylize(style)
         return styled_text
 
@@ -379,14 +379,7 @@ class Text(JupyterMixin):
         Returns:
             Text: A new text instance.
         """
-        text = cls(
-            style=style,
-            justify=justify,
-            overflow=overflow,
-            no_wrap=no_wrap,
-            end=end,
-            tab_size=tab_size,
-        )
+        text = cls(=style, =justify, =overflow, =no_wrap, =end, =tab_size)
         append = text.append
         _Text = Text
         for part in parts:
@@ -517,7 +510,7 @@ class Text(JupyterMixin):
 
         """
         style = Style.from_meta(meta)
-        self.stylize(style, start=start, end=end)
+        self.stylize(style, =start, =end)
 
     def on(self, meta: Optional[Dict[str, Any]] = None, **handlers: Any) -> "Text":
         """Apply event handlers (used by Textual project).
@@ -694,8 +687,8 @@ class Text(JupyterMixin):
         lines = self.wrap(
             console,
             options.max_width,
-            justify=justify,
-            overflow=overflow,
+            =justify,
+            =overflow,
             tab_size=tab_size or 8,
             no_wrap=pick_bool(self.no_wrap, options.no_wrap, False),
         )
@@ -1124,12 +1117,7 @@ class Text(JupyterMixin):
         overflow = self.overflow
         _Text = Text
         new_lines = Lines(
-            _Text(
-                text[start:end],
-                style=style,
-                justify=justify,
-                overflow=overflow,
-            )
+            _Text(text[start:end], =style, =justify, =overflow)
             for start, end in line_ranges
         )
         if not self._spans:
@@ -1319,11 +1307,11 @@ class Text(JupyterMixin):
             line.plain = new_indent + line.plain[len(new_indent) :]
             line.stylize(style, 0, len(new_indent))
             if blank_lines:
-                new_lines.extend([Text(new_indent, style=style)] * blank_lines)
+                new_lines.extend([Text(new_indent, =style)] * blank_lines)
                 blank_lines = 0
             add_line(line)
         if blank_lines:
-            new_lines.extend([Text("", style=style)] * blank_lines)
+            new_lines.extend([Text("", =style)] * blank_lines)
 
         new_text = text.blank_copy("\n").join(new_lines)
         return new_text

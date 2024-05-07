@@ -96,9 +96,9 @@ def auto(
         return cls
 
     if cls is None:
-        return partial(do_replace, angular=angular)
+        return partial(do_replace, =angular)
     else:
-        return do_replace(cls, angular=angular)
+        return do_replace(cls, =angular)
 
 
 @overload
@@ -115,7 +115,7 @@ def rich_repr(
     cls: Optional[Type[T]] = None, *, angular: bool = False
 ) -> Union[Type[T], Callable[[Type[T]], Type[T]]]:
     if cls is None:
-        return auto(angular=angular)
+        return auto(=angular)
     else:
         return auto(cls)
 

@@ -70,7 +70,7 @@ table_centered = Align.center(table)
 
 console.clear()
 
-with Live(table_centered, console=console, screen=False, refresh_per_second=20):
+with Live(table_centered, =console, screen=False, refresh_per_second=20):
     with beat(10):
         table.add_column("Release Date", no_wrap=True)
 
