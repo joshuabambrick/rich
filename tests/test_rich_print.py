@@ -43,7 +43,7 @@ def test_rich_print_json_round_trip():
     data = ["x" * 100, 2e128]
     console = rich.get_console()
     with console.capture() as capture:
-        rich.print_json(data=data, indent=4)
+        rich.print_json(=data, indent=4)
     result = capture.get()
     print(repr(result))
     result_data = json.loads(result)

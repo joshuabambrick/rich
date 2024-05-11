@@ -557,7 +557,7 @@ class Style:
                         f"unable to parse {word!r} as color; {error}"
                     ) from None
                 color = word
-        style = Style(color=color, bgcolor=bgcolor, link=link, **attributes)
+        style = Style(=color, =bgcolor, =link, **attributes)
         return style
 
     @lru_cache(maxsize=1024)

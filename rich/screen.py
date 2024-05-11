@@ -42,11 +42,11 @@ class Screen:
     ) -> "RenderResult":
         width, height = options.size
         style = console.get_style(self.style) if self.style else None
-        render_options = options.update(width=width, height=height)
+        render_options = options.update(=width, =height)
         lines = console.render_lines(
-            self.renderable or "", render_options, style=style, pad=True
+            self.renderable or "", render_options, =style, pad=True
         )
-        lines = Segment.set_shape(lines, width, height, style=style)
+        lines = Segment.set_shape(lines, width, height, =style)
         new_line = Segment("\n\r") if self.application_mode else Segment.line()
         for last, line in loop_last(lines):
             yield from line

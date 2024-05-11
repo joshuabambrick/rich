@@ -41,7 +41,7 @@ class Process:
 
 def generate_process(pid: int) -> Process:
     return Process(
-        pid=pid,
+        =pid,
         command=f"Process {pid}",
         cpu_percent=random.random() * 20,
         memory=random.randint(10, 200) ** 3,
@@ -78,7 +78,7 @@ def create_process_table(height: int) -> Table:
 
 console = Console()
 
-with Live(console=console, screen=True, auto_refresh=False) as live:
+with Live(=console, screen=True, auto_refresh=False) as live:
     while True:
         live.update(create_process_table(console.size.height - 4), refresh=True)
         time.sleep(1)

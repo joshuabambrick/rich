@@ -183,7 +183,7 @@ if __name__ == "__main__":  # pragma: no cover
     table = Table("Name", "Styling")
 
     for style_name, style in DEFAULT_STYLES.items():
-        table.add_row(Text(style_name, style=style), str(style))
+        table.add_row(Text(style_name, =style), str(style))
 
     console.print(table)
     if html:

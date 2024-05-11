@@ -201,10 +201,10 @@ if sys.platform == "win32":
         term.erase_line()
         start = WindowsCoordinates(row=CURSOR_Y, col=0)
         FillConsoleOutputCharacter.assert_called_once_with(
-            win32_handle, " ", length=SCREEN_WIDTH, start=start
+            win32_handle, " ", length=SCREEN_WIDTH, =start
         )
         FillConsoleOutputAttribute.assert_called_once_with(
-            win32_handle, DEFAULT_STYLE_ATTRIBUTE, length=SCREEN_WIDTH, start=start
+            win32_handle, DEFAULT_STYLE_ATTRIBUTE, length=SCREEN_WIDTH, =start
         )
 
     @patch.object(_win32_console, "FillConsoleOutputCharacter", return_value=None)
@@ -242,10 +242,10 @@ if sys.platform == "win32":
         start = WindowsCoordinates(CURSOR_Y, 0)
 
         FillConsoleOutputCharacter.assert_called_once_with(
-            win32_handle, " ", length=CURSOR_X, start=start
+            win32_handle, " ", length=CURSOR_X, =start
         )
         FillConsoleOutputAttribute.assert_called_once_with(
-            win32_handle, DEFAULT_STYLE_ATTRIBUTE, length=CURSOR_X, start=start
+            win32_handle, DEFAULT_STYLE_ATTRIBUTE, length=CURSOR_X, =start
         )
 
     @patch.object(_win32_console, "SetConsoleCursorPosition", return_value=None)
@@ -257,7 +257,7 @@ if sys.platform == "win32":
 
         term.move_cursor_to(coords)
 
-        SetConsoleCursorPosition.assert_called_once_with(win32_handle, coords=coords)
+        SetConsoleCursorPosition.assert_called_once_with(win32_handle, =coords)
 
     @patch.object(_win32_console, "SetConsoleCursorPosition", return_value=None)
     def test_move_cursor_to_out_of_bounds_row(

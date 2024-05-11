@@ -58,7 +58,7 @@ def test_fixed_width():
 def test_render_size():
     console = Console(width=63, height=46, legacy_windows=False)
     options = console.options.update_dimensions(80, 4)
-    lines = console.render_lines(Panel("foo", title="Hello"), options=options)
+    lines = console.render_lines(Panel("foo", title="Hello"), =options)
     print(repr(lines))
     expected = [
         [

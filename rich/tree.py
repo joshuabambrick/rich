@@ -63,7 +63,7 @@ class Tree(JupyterMixin):
             label,
             style=self.style if style is None else style,
             guide_style=self.guide_style if guide_style is None else guide_style,
-            expanded=expanded,
+            =expanded,
             highlight=self.highlight if highlight is None else highlight,
         )
         self.children.append(node)

@@ -37,13 +37,13 @@ class JSON:
         data = loads(json)
         json = dumps(
             data,
-            indent=indent,
+            =indent,
             skipkeys=skip_keys,
-            ensure_ascii=ensure_ascii,
-            check_circular=check_circular,
-            allow_nan=allow_nan,
-            default=default,
-            sort_keys=sort_keys,
+            =ensure_ascii,
+            =check_circular,
+            =allow_nan,
+            =default,
+            =sort_keys,
         )
         highlighter = JSONHighlighter() if highlight else NullHighlighter()
         self.text = highlighter(json)
@@ -84,13 +84,13 @@ class JSON:
         json_instance: "JSON" = cls.__new__(cls)
         json = dumps(
             data,
-            indent=indent,
+            =indent,
             skipkeys=skip_keys,
-            ensure_ascii=ensure_ascii,
-            check_circular=check_circular,
-            allow_nan=allow_nan,
-            default=default,
-            sort_keys=sort_keys,
+            =ensure_ascii,
+            =check_circular,
+            =allow_nan,
+            =default,
+            =sort_keys,
         )
         highlighter = JSONHighlighter() if highlight else NullHighlighter()
         json_instance.text = highlighter(json)

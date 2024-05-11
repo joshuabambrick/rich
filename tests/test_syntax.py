@@ -206,7 +206,7 @@ def test_highlight_background_color():
 def test_get_number_styles():
     syntax = Syntax(CODE, "python", theme="monokai", line_numbers=True)
     console = Console(color_system="windows")
-    assert syntax._get_number_styles(console=console) == (
+    assert syntax._get_number_styles(=console) == (
         Style.parse("on #272822"),
         Style.parse("dim on #272822"),
         Style.parse("not dim on #272822"),

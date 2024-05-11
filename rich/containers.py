@@ -128,17 +128,17 @@ class Lines:
 
         if justify == "left":
             for line in self._lines:
-                line.truncate(width, overflow=overflow, pad=True)
+                line.truncate(width, =overflow, pad=True)
         elif justify == "center":
             for line in self._lines:
                 line.rstrip()
-                line.truncate(width, overflow=overflow)
+                line.truncate(width, =overflow)
                 line.pad_left((width - cell_len(line.plain)) // 2)
                 line.pad_right(width - cell_len(line.plain))
         elif justify == "right":
             for line in self._lines:
                 line.rstrip()
-                line.truncate(width, overflow=overflow)
+                line.truncate(width, =overflow)
                 line.pad_left(width - cell_len(line.plain))
         elif justify == "full":
             for line_index, line in enumerate(self._lines):

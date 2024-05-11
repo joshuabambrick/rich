@@ -66,7 +66,7 @@ def test_ipy_display_hook__repr_html():
             return "hello"
 
     console.begin_capture()
-    _ipy_display_hook(Thing(), console=console)
+    _ipy_display_hook(Thing(), =console)
 
     # Rendering delegated to notebook because _repr_html_ method exists
     assert console.end_capture() == ""
@@ -90,7 +90,7 @@ def test_ipy_display_hook__multiple_special_reprs():
         def _repr_html_(self):
             return "hello"
 
-    result = _ipy_display_hook(Thing(), console=console)
+    result = _ipy_display_hook(Thing(), =console)
     assert result == "A Thing"
 
 
@@ -101,7 +101,7 @@ def test_ipy_display_hook__no_special_repr_methods():
         def __repr__(self) -> str:
             return "hello"
 
-    result = _ipy_display_hook(Thing(), console=console)
+    result = _ipy_display_hook(Thing(), =console)
     # should be repr as-is
     assert result == "hello"
 
@@ -126,14 +126,14 @@ def test_ipy_display_hook__special_repr_raises_exception():
         def __repr__(self):
             return "therepr"
 
-    result = _ipy_display_hook(Thing(), console=console)
+    result = _ipy_display_hook(Thing(), =console)
     assert result == "therepr"
 
 
 def test_ipy_display_hook__console_renderables_on_newline():
     console = Console(file=io.StringIO(), force_jupyter=True)
     console.begin_capture()
-    result = _ipy_display_hook(Text("hello"), console=console)
+    result = _ipy_display_hook(Text("hello"), =console)
     assert result == "\nhello"
 
 
@@ -526,37 +526,37 @@ def test_indent_lines():
 def test_pprint():
     console = Console(color_system=None)
     console.begin_capture()
-    pprint(1, console=console)
+    pprint(1, =console)
     assert console.end_capture() == "1\n"
 
 
 def test_pprint_max_values():
     console = Console(color_system=None)
     console.begin_capture()
-    pprint([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], console=console, max_length=2)
+    pprint([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], =console, max_length=2)
     assert console.end_capture() == "[1, 2, ... +8]\n"
 
 
 def test_pprint_max_items():
     console = Console(color_system=None)
     console.begin_capture()
-    pprint({"foo": 1, "bar": 2, "egg": 3}, console=console, max_length=2)
+    pprint({"foo": 1, "bar": 2, "egg": 3}, =console, max_length=2)
     assert console.end_capture() == """{'foo': 1, 'bar': 2, ... +1}\n"""
 
 
 def test_pprint_max_string():
     console = Console(color_system=None)
     console.begin_capture()
-    pprint(["Hello" * 20], console=console, max_string=8)
+    pprint(["Hello" * 20], =console, max_string=8)
     assert console.end_capture() == """['HelloHel'+92]\n"""
 
 
 def test_tuples():
     console = Console(color_system=None)
     console.begin_capture()
-    pprint((1,), console=console)
-    pprint((1,), expand_all=True, console=console)
-    pprint(((1,),), expand_all=True, console=console)
+    pprint((1,), =console)
+    pprint((1,), expand_all=True, =console)
+    pprint(((1,),), expand_all=True, =console)
     result = console.end_capture()
     print(repr(result))
     expected = "(1,)\n(\n│   1,\n)\n(\n│   (\n│   │   1,\n│   ),\n)\n"

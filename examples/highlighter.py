@@ -15,6 +15,6 @@ class EmailHighlighter(RegexHighlighter):
 
 
 theme = Theme({"example.email": "bold magenta"})
-console = Console(highlighter=EmailHighlighter(), theme=theme)
+console = Console(highlighter=EmailHighlighter(), =theme)
 
 console.print("Send funds to money@example.org")

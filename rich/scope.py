@@ -53,15 +53,15 @@ def render_scope(
             key_text,
             Pretty(
                 value,
-                highlighter=highlighter,
-                indent_guides=indent_guides,
-                max_length=max_length,
-                max_string=max_string,
+                =highlighter,
+                =indent_guides,
+                =max_length,
+                =max_string,
             ),
         )
     return Panel.fit(
         items_table,
-        title=title,
+        =title,
         border_style="scope.border",
         padding=(0, 1),
     )

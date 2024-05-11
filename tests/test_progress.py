@@ -193,7 +193,7 @@ def make_progress() -> Progress:
         legacy_windows=False,
         _environ={},
     )
-    progress = Progress(console=console, get_time=fake_time, auto_refresh=False)
+    progress = Progress(=console, get_time=fake_time, auto_refresh=False)
     task1 = progress.add_task("foo")
     task2 = progress.add_task("bar", total=30)
     progress.advance(task2, 16)
@@ -231,7 +231,7 @@ def test_expand_bar() -> None:
     )
     progress = Progress(
         BarColumn(bar_width=None),
-        console=console,
+        =console,
         get_time=lambda: 1.0,
         auto_refresh=False,
     )
@@ -256,7 +256,7 @@ def test_progress_with_none_total_renders_a_pulsing_bar() -> None:
     )
     progress = Progress(
         BarColumn(bar_width=None),
-        console=console,
+        =console,
         get_time=lambda: 1.0,
         auto_refresh=False,
     )
@@ -289,7 +289,7 @@ def test_track() -> None:
     test = ["foo", "bar", "baz"]
     expected_values = iter(test)
     for value in track(
-        test, "test", console=console, auto_refresh=False, get_time=MockClock(auto=True)
+        test, "test", =console, auto_refresh=False, get_time=MockClock(auto=True)
     ):
         assert value == next(expected_values)
     result = console.file.getvalue()
@@ -316,7 +316,7 @@ def test_progress_track() -> None:
         _environ={},
     )
     progress = Progress(
-        console=console, auto_refresh=False, get_time=MockClock(auto=True)
+        =console, auto_refresh=False, get_time=MockClock(auto=True)
     )
     test = ["foo", "bar", "baz"]
     expected_values = iter(test)
@@ -359,7 +359,7 @@ def test_columns() -> None:
         MofNCompleteColumn(),
         MofNCompleteColumn(separator=" of "),
         transient=True,
-        console=console,
+        =console,
         auto_refresh=False,
         get_time=MockClock(),
     )
@@ -507,12 +507,7 @@ def test_progress_max_refresh() -> None:
     )
     column = TextColumn("{task.description}")
     column.max_refresh = 3
-    progress = Progress(
-        column,
-        get_time=get_time,
-        auto_refresh=False,
-        console=console,
-    )
+    progress = Progress(column, =get_time, auto_refresh=False, =console)
     console.begin_capture()
     with progress:
         task_id = progress.add_task("start")
@@ -550,10 +545,7 @@ def test_no_output_if_progress_is_disabled() -> None:
         legacy_windows=False,
         _environ={},
     )
-    progress = Progress(
-        console=console,
-        disable=True,
-    )
+    progress = Progress(=console, disable=True)
     test = ["foo", "bar", "baz"]
     expected_values = iter(test)
     with progress:
@@ -574,9 +566,7 @@ def test_open() -> None:
         legacy_windows=False,
         _environ={},
     )
-    progress = Progress(
-        console=console,
-    )
+    progress = Progress(=console)
 
     fd, filename = tempfile.mkstemp()
     with os.fdopen(fd, "wb") as f:
@@ -608,7 +598,7 @@ def test_wrap_file() -> None:
         total = f.write(b"Hello, World!")
     try:
         with open(filename, "rb") as file:
-            with rich.progress.wrap_file(file, total=total) as f:
+            with rich.progress.wrap_file(file, =total) as f:
                 assert f.read() == b"Hello, World!"
                 assert f.mode == "rb"
                 assert f.name == filename
@@ -629,9 +619,7 @@ def test_wrap_file_task_total() -> None:
         legacy_windows=False,
         _environ={},
     )
-    progress = Progress(
-        console=console,
-    )
+    progress = Progress(=console)
 
     fd, filename = tempfile.mkstemp()
     with os.fdopen(fd, "wb") as f:
@@ -639,8 +627,8 @@ def test_wrap_file_task_total() -> None:
     try:
         with progress:
             with open(filename, "rb") as file:
-                task_id = progress.add_task("Reading", total=total)
-                with progress.wrap_file(file, task_id=task_id) as f:
+                task_id = progress.add_task("Reading", =total)
+                with progress.wrap_file(file, =task_id) as f:
                     assert f.read() == b"Hello, World!"
     finally:
         os.remove(filename)

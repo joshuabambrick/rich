@@ -12,9 +12,9 @@ def create_capture_console(
     *, width: int = 60, height: int = 80, force_terminal: Optional[bool] = True
 ) -> Console:
     return Console(
-        width=width,
-        height=height,
-        force_terminal=force_terminal,
+        =width,
+        =height,
+        =force_terminal,
         legacy_windows=False,
         color_system=None,  # use no color system to reduce complexity of output,
         _environ={},
@@ -38,7 +38,7 @@ def test_live_state() -> None:
 def test_growing_display() -> None:
     console = create_capture_console()
     console.begin_capture()
-    with Live(console=console, auto_refresh=False) as live:
+    with Live(=console, auto_refresh=False) as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -54,7 +54,7 @@ def test_growing_display() -> None:
 def test_growing_display_transient() -> None:
     console = create_capture_console()
     console.begin_capture()
-    with Live(console=console, auto_refresh=False, transient=True) as live:
+    with Live(=console, auto_refresh=False, transient=True) as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -70,7 +70,7 @@ def test_growing_display_overflow_ellipsis() -> None:
     console = create_capture_console(height=5)
     console.begin_capture()
     with Live(
-        console=console, auto_refresh=False, vertical_overflow="ellipsis"
+        =console, auto_refresh=False, vertical_overflow="ellipsis"
     ) as live:
         display = ""
         for step in range(10):
@@ -86,7 +86,7 @@ def test_growing_display_overflow_ellipsis() -> None:
 def test_growing_display_overflow_crop() -> None:
     console = create_capture_console(height=5)
     console.begin_capture()
-    with Live(console=console, auto_refresh=False, vertical_overflow="crop") as live:
+    with Live(=console, auto_refresh=False, vertical_overflow="crop") as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -101,7 +101,7 @@ def test_growing_display_overflow_crop() -> None:
 def test_growing_display_overflow_visible() -> None:
     console = create_capture_console(height=5)
     console.begin_capture()
-    with Live(console=console, auto_refresh=False, vertical_overflow="visible") as live:
+    with Live(=console, auto_refresh=False, vertical_overflow="visible") as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -117,7 +117,7 @@ def test_growing_display_autorefresh() -> None:
     """Test generating a table but using auto-refresh from threading"""
     console = create_capture_console(height=5)
     console.begin_capture()
-    with Live(console=console, auto_refresh=True, vertical_overflow="visible") as live:
+    with Live(=console, auto_refresh=True, vertical_overflow="visible") as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -130,7 +130,7 @@ def test_growing_display_autorefresh() -> None:
 def test_growing_display_console_redirect() -> None:
     console = create_capture_console()
     console.begin_capture()
-    with Live(console=console, auto_refresh=False) as live:
+    with Live(=console, auto_refresh=False) as live:
         display = ""
         for step in range(10):
             console.print(f"Running step {step}")
@@ -146,7 +146,7 @@ def test_growing_display_console_redirect() -> None:
 def test_growing_display_file_console() -> None:
     console = create_capture_console(force_terminal=False)
     console.begin_capture()
-    with Live(console=console, auto_refresh=False) as live:
+    with Live(=console, auto_refresh=False) as live:
         display = ""
         for step in range(10):
             display += f"Step {step}\n"
@@ -161,7 +161,7 @@ def test_growing_display_file_console() -> None:
 def test_live_screen() -> None:
     console = create_capture_console(width=20, height=5)
     console.begin_capture()
-    with Live(Text("foo"), screen=True, console=console, auto_refresh=False) as live:
+    with Live(Text("foo"), screen=True, =console, auto_refresh=False) as live:
         live.refresh()
     result = console.end_capture()
     print(repr(result))

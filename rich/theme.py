@@ -50,9 +50,9 @@ class Theme:
             Theme: A New theme instance.
         """
         config = configparser.ConfigParser()
-        config.read_file(config_file, source=source)
+        config.read_file(config_file, =source)
         styles = {name: Style.parse(value) for name, value in config.items("styles")}
-        theme = Theme(styles, inherit=inherit)
+        theme = Theme(styles, =inherit)
         return theme
 
     @classmethod
@@ -69,8 +69,8 @@ class Theme:
         Returns:
             Theme: A new theme instance.
         """
-        with open(path, "rt", encoding=encoding) as config_file:
-            return cls.from_file(config_file, source=path, inherit=inherit)
+        with open(path, "rt", =encoding) as config_file:
+            return cls.from_file(config_file, source=path, =inherit)
 
 
 class ThemeStackError(Exception):

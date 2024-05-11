@@ -28,7 +28,7 @@ def walk_directory(directory: pathlib.Path, tree: Tree) -> None:
             style = "dim" if path.name.startswith("__") else ""
             branch = tree.add(
                 f"[bold magenta]:open_file_folder: [link file://{path}]{escape(path.name)}",
-                style=style,
+                =style,
                 guide_style=style,
             )
             walk_directory(path, branch)

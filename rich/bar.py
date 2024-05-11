@@ -40,7 +40,7 @@ class Bar(JupyterMixin):
         self.begin = max(begin, 0)
         self.end = min(end, size)
         self.width = width
-        self.style = Style(color=color, bgcolor=bgcolor)
+        self.style = Style(=color, =bgcolor)
 
     def __repr__(self) -> str:
         return f"Bar({self.size}, {self.begin}, {self.end})"

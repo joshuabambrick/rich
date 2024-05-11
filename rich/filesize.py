@@ -36,8 +36,8 @@ def _to_str(
     return "{:,.{precision}f}{separator}{}".format(
         (base * size / unit),
         suffix,
-        precision=precision,
-        separator=separator,
+        =precision,
+        =separator,
     )
 
 
@@ -84,6 +84,6 @@ def decimal(
         size,
         ("kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
         1000,
-        precision=precision,
-        separator=separator,
+        =precision,
+        =separator,
     )

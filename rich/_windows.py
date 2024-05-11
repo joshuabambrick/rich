@@ -57,7 +57,7 @@ else:
             truecolor = win_version.major > 10 or (
                 win_version.major == 10 and win_version.build >= 15063
             )
-        features = WindowsConsoleFeatures(vt=vt, truecolor=truecolor)
+        features = WindowsConsoleFeatures(=vt, =truecolor)
         return features
 
 

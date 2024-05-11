@@ -19,7 +19,7 @@ def test_empty_bytes():
 
 def test_flush():
     file = io.StringIO()
-    console = Console(file=file)
+    console = Console(=file)
     file_proxy = FileProxy(console, file)
     file_proxy.write("foo")
     assert file.getvalue() == ""
@@ -29,7 +29,7 @@ def test_flush():
 
 def test_new_lines():
     file = io.StringIO()
-    console = Console(file=file)
+    console = Console(=file)
     file_proxy = FileProxy(console, file)
     file_proxy.write("-\n-")
     assert file.getvalue() == "-\n"

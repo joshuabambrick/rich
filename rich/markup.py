@@ -128,9 +128,9 @@ def render(
     if "[" not in markup:
         return Text(
             emoji_replace(markup, default_variant=emoji_variant) if emoji else markup,
-            style=style,
+            =style,
         )
-    text = Text(style=style)
+    text = Text(=style)
     append = text.append
     normalize = Style.normalize
 

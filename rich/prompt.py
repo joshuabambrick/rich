@@ -132,13 +132,13 @@ class PromptBase(Generic[PromptType]):
         """
         _prompt = cls(
             prompt,
-            console=console,
-            password=password,
-            choices=choices,
-            show_default=show_default,
-            show_choices=show_choices,
+            =console,
+            =password,
+            =choices,
+            =show_default,
+            =show_choices,
         )
-        return _prompt(default=default, stream=stream)
+        return _prompt(=default, =stream)
 
     def render_default(self, default: DefaultType) -> Text:
         """Turn the supplied default in to a Text instance.
@@ -200,7 +200,7 @@ class PromptBase(Generic[PromptType]):
         Returns:
             str: String from user.
         """
-        return console.input(prompt, password=password, stream=stream)
+        return console.input(prompt, =password, =stream)
 
     def check_choice(self, value: str) -> bool:
         """Check value is in the list of valid choices.
@@ -271,7 +271,7 @@ class PromptBase(Generic[PromptType]):
         while True:
             self.pre_prompt()
             prompt = self.make_prompt(default)
-            value = self.get_input(self.console, prompt, self.password, stream=stream)
+            value = self.get_input(self.console, prompt, self.password, =stream)
             if value == "" and default != ...:
                 return default
             try:

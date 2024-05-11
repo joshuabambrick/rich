@@ -104,7 +104,7 @@ class TableSuite:
     def _print_table(self, width):
         table = Table(title="Star Wars Movies")
         console = Console(
-            file=StringIO(), color_system="truecolor", legacy_windows=False, width=width
+            file=StringIO(), color_system="truecolor", legacy_windows=False, =width
         )
         table.add_column("Released", justify="right", style="cyan", no_wrap=True)
         table.add_column("Title", style="magenta")

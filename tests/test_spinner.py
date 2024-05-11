@@ -21,7 +21,7 @@ def test_spinner_render():
         return time
 
     console = Console(
-        width=80, color_system=None, force_terminal=True, get_time=get_time
+        width=80, color_system=None, force_terminal=True, =get_time
     )
     console.begin_capture()
     spinner = Spinner("dots", "Foo")
@@ -41,7 +41,7 @@ def test_spinner_update():
         nonlocal time
         return time
 
-    console = Console(width=20, force_terminal=True, get_time=get_time, _environ={})
+    console = Console(width=20, force_terminal=True, =get_time, _environ={})
     console.begin_capture()
     spinner = Spinner("dots")
     console.print(spinner)

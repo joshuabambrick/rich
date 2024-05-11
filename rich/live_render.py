@@ -84,7 +84,7 @@ class LiveRender:
     ) -> RenderResult:
         renderable = self.renderable
         style = console.get_style(self.style)
-        lines = console.render_lines(renderable, options, style=style, pad=False)
+        lines = console.render_lines(renderable, options, =style, pad=False)
         shape = Segment.get_shape(lines)
 
         _, height = shape

@@ -27,7 +27,7 @@ theme = Theme(
         "req.stats": Style.parse("dim"),
     }
 )
-console = Console(theme=theme)
+console = Console(=theme)
 
 console.log("Server starting...")
 console.log("Serving on http://127.0.0.1:8000")
